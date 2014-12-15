@@ -99,5 +99,5 @@
     getProvidedVerbs: function () {
       return providedVerbs;
     }
-  }
+  };
 });

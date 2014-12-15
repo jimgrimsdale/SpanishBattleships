@@ -42,15 +42,17 @@ battleshipsApp.factory('boardService', function () {
     });
 
     var shipLengths = [2, 3, 4, 4, 5];
+    var shipIds = ["twoLong", "threeLong", "fourLongA", "fourLongB", "fiveLong"];
 
-    angular.forEach(shipLengths, function(shipLength) {
+    angular.forEach(shipLengths, function(shipLength, index) {
       shipPlaced = false;
       while(!shipPlaced) {
         shipCoords = placeShip(shipLength, allCells);
         if(shipCoords !== null) {
           ship = {
             coords: shipCoords,
-            sunk: false
+            sunk: false,
+            shipId: shipIds[index]
           };
           ships.push(ship);
           shipPlaced = true;
@@ -128,5 +130,5 @@ battleshipsApp.factory('boardService', function () {
       ships = getShips();
       return ships;
     }
-  }
+  };
 });

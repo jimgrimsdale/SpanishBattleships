@@ -10,7 +10,6 @@
 	border-right: solid 1;
 }
 
-
 td {
   width:50px;
   height:50px;
@@ -87,6 +86,10 @@ td.shipGreen {
 #divText {
   font-size: 60px;
   font-weight: bold;
+}
+
+.sunk {
+  background-color: red;
 }
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
