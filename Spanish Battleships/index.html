@@ -1,0 +1,92 @@
+<html ng-app="battleshipsApp">
+
+  <head>
+    <script src="app/lib/angular/angular.js"></script>
+    <script src="app/lib/jquery.min.js"></script>
+    <script src="app/lib/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="app/css/bootstrap.min.css">
+    <link rel="stylesheet" href="app/css/main.css" />
+  </head>
+
+<body ng-controller="BattleshipsController" ng-cloak >
+  
+  <div class="container">
+    <div class="row">
+      <h1 class="col-xs-8 col-xs-offset-1">Battleships</h1>
+    </div>
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-0">
+        <div class="xTitles">
+          <div class="xTitle" ng-repeat="verb in boardVerbs">{{verb.verb}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-1" style="padding-right: 0">
+        <div class="yTitles pull-right">
+          <div class="yTitle">yo</div>
+          <div class="yTitle">tu</div>
+          <div class="yTitle">el/ella/usted</div>
+          <div class="yTitle">nosotros</div>
+          <div class="yTitle">vosotros</div>
+          <div class="yTitle">ellos/ellas/ustedes</div>
+        </div>
+      </div>
+      <div class="board col-xs-7 col-xs-offset-0" ng-show="showBoard">
+        <div ng-class="{ true : 'firstCell' }[$first]" class="defaultCell" ng-repeat="cell in boardLayout.rows[0]" ng-style="{ 'backgroundColor':cell.colour }"></div>
+        <div ng-class="{ true : 'firstCell' }[$first]" class="defaultCell" ng-repeat="cell in boardLayout.rows[1]" ng-style="{ 'backgroundColor':cell.colour }"></div>
+        <div ng-class="{ true : 'firstCell' }[$first]" class="defaultCell" ng-repeat="cell in boardLayout.rows[2]" ng-style="{ 'backgroundColor':cell.colour }"></div>
+        <div ng-class="{ true : 'firstCell' }[$first]" class="defaultCell" ng-repeat="cell in boardLayout.rows[3]" ng-style="{ 'backgroundColor':cell.colour }"></div>
+        <div ng-class="{ true : 'firstCell' }[$first]" class="defaultCell" ng-repeat="cell in boardLayout.rows[4]" ng-style="{ 'backgroundColor':cell.colour }"></div>
+        <div ng-class="{ true : 'firstCell' }[$first]" class="defaultCell" ng-repeat="cell in boardLayout.rows[5]" ng-style="{ 'backgroundColor':cell.colour }"></div>
+      </div>
+      <div class="board col-xs-7 col-xs-offset-0" ng-hide="showBoard">
+        <div class="tocadoContainer" ng-style="{ 'backgroundColor': tocadoColour }">
+          <div class="tocado">TOCADO!!!</div>
+        </div>
+      </div>
+      <div class="col-xs-4">
+        <div class="btn-group-vertical" role="group">
+          <button type="button" class="btn btn-warning" ng-class="{'active': selectedTense==='present'}" ng-click="switchTense('present')">present</button>
+          <button type="button" class="btn btn-warning" ng-class="{'active': selectedTense==='imperfect'}" ng-click="switchTense('imperfect')">imperfect</button>
+          <button type="button" class="btn btn-warning" ng-class="{'active': selectedTense==='preterite'}" ng-click="switchTense('preterite')">preterite</button>
+        </div>
+        
+        <div>
+          <button type="button" class="btn btn-primary" ng-click="resetBoard()" style="margin-top: 40px;">Reset Board</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-5 col-xs-offset-4" style="margin-top: 10px;">
+        <form ng-submit="onShotAttempt()" style="position:relative; right: 1200;">
+          <input type="text" class="inputWord" ng-model="inputText" ng-keyup="keyup($event)" ng-keydown="keydown($event)" autofocus/>
+          <input class="btn btn-primary" type="submit" value="Fire" />
+        </form>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-5 col-xs-offset-4">
+        <div id='validationMessage'>{{validationMessage}}</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-3 col-xs-offset-4"  ng-hide="showFilteredInputText">
+        <div id='divText' ng-style="{ 'color':divTextColor }">{{inputText}}</div>
+      </div>
+      <div class="col-xs-3 col-xs-offset-4" ng-show="showFilteredInputText">
+        <div id='divText' ng-style="{ 'color':divTextColor }">{{filteredInputText}}</div>
+      </div>
+    </div>   
+  </div>
+   
+  <script src="app/js/app.js"></script>
+  <script src="app/js/services/boardService.js"></script>
+  <script src="app/js/services/dictionaryService.js"></script>
+  <script src="app/js/controllers/BattleshipsController.js"></script>
+  <script src="app/js/boardsetup.js"></script>
+</body>
+</html>

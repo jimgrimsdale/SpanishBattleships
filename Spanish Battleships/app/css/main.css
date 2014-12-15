@@ -1,0 +1,94 @@
+#validationMessage {
+  color: red;
+}
+
+.cell-bottom {
+	border-bottom: solid 1;
+}
+
+.cell-right {
+	border-right: solid 1;
+}
+
+
+td {
+  width:50px;
+  height:50px;
+  background-color: orange;
+  border:solid 1
+}
+
+td.shipRed {
+  background-color: red;
+}
+
+td.shipBlue {
+  background-color: blue;
+}
+
+td.shipGreen {
+  background-color: green;
+}
+
+.firstCell {
+  clear:both;
+}
+
+.defaultCell {
+  width:50px;
+  height:50px;
+
+  border:solid 1;
+  float:left;
+}
+
+.yTitles {
+  width: 130px;
+}
+
+.yTitle {
+  height: 50px;
+  padding-top: 16px;
+  text-align: right;
+}
+
+
+.xTitles {
+    margin: 30 0 0 100;
+   -moz-transform:rotate(-90deg); 
+   -moz-transform-origin: top left;
+   -webkit-transform: rotate(-90deg);
+   -webkit-transform-origin: top left;
+   -o-transform: rotate(-90deg);
+   -o-transform-origin:  top left;
+    position:relative;
+   top:40px;
+   height: 50px;
+   width: 50px;
+   padding-top: 13px;
+}
+
+.xTitle {
+  width: 50px;
+  height: 50px;
+}
+
+.tocadoContainer {
+  width: 600px;
+  height: 300px;
+}
+
+.tocado {
+  font-size: 80px;
+  text-align: center;
+  padding-top:96px;
+}
+
+#divText {
+  font-size: 60px;
+  font-weight: bold;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
