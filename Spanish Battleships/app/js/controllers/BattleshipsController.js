@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
   'use strict';
 
   battleshipsApp.controller('BattleshipsController',
@@ -22,11 +22,11 @@
       }
 
       $scope.selectedTense = "present";
-      $scope.boardVerbs = dictionaryService.get12Verbs($scope.selectedTense);
+      // $scope.boardVerbs = dictionaryService.getVerbs($scope.selectedTense, 12);
       $scope.showBoard = true; 
 
-      $scope.boardLayout = boardService.layout();
-      $scope.ships = boardService.ships();
+      // $scope.boardLayout = boardService.layout(12);
+      // $scope.ships = boardService.ships();
       $scope.fiveLongSunk = false;
       $scope.fourLongASunk = false;
       $scope.fourLongBSunk = false;
@@ -43,12 +43,15 @@
 
       $scope.switchTense = function (tense) {
         $scope.selectedTense = tense;
-        $scope.boardVerbs = dictionaryService.get12Verbs($scope.selectedTense);
+        $scope.boardVerbs = dictionaryService.getVerbs($scope.selectedTense, 12);
       };
 
-      $scope.resetBoard = function () {
-        $scope.boardVerbs = dictionaryService.get12Verbs($scope.selectedTense);
-        $scope.boardLayout = boardService.layout();
+      $scope.resetBoard = function (numberOfVerbs) {
+        if (numberOfVerbs !== undefined) {
+          $scope.numberOfVerbs = numberOfVerbs;
+        }
+        $scope.boardVerbs = dictionaryService.getVerbs($scope.selectedTense, $scope.numberOfVerbs);
+        $scope.boardLayout = boardService.layout($scope.numberOfVerbs);
         $scope.ships = boardService.ships();
         verbsTried = [];
       };

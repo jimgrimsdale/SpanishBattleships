@@ -2,12 +2,12 @@ battleshipsApp.factory('boardService', function () {
   var layout,
     ships;
 
-  function getLayout () {
+  function getLayout (numberOfVerbs) {
     var r, c, layout, newCell;
     layout = { rows: [] };
     for(r = 0; r < 6; r++) {
       row = [];
-      for(c = 0; c < 12; c++) {
+      for(c = 0; c < numberOfVerbs; c++) {
         row.push({ row: r, column: c, colour: 'blue', hasShip: false });
       }
       layout.rows.push(row);
@@ -122,8 +122,8 @@ battleshipsApp.factory('boardService', function () {
 
 
   return {
-    layout: function () {
-      layout = getLayout();
+    layout: function (numberOfVerbs) {
+      layout = getLayout(numberOfVerbs);
       return layout;
     },
     ships: function () {

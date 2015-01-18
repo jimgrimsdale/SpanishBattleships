@@ -1,3 +1,15 @@
+body {
+  background-color: #003366;
+  color: white;
+}
+
+#headerSpanishBattleships {
+  font-family: 'CRYSTALRegular'; 
+  font-weight: normal; 
+  font-style: normal;
+  color: yellow;
+}
+
 #validationMessage {
   color: red;
 }
@@ -34,8 +46,8 @@ td.shipGreen {
 }
 
 .defaultCell {
-  width:50px;
-  height:50px;
+  width:40px;
+  height:40px;
 
   border:solid 1;
   float:left;
@@ -53,7 +65,7 @@ td.shipGreen {
 
 
 .xTitles {
-    margin: 30 0 0 100;
+    margin: 30 0 0 0;
    -moz-transform:rotate(-90deg); 
    -moz-transform-origin: top left;
    -webkit-transform: rotate(-90deg);
@@ -92,6 +104,173 @@ td.shipGreen {
   background-color: red;
 }
 
+.dropdown {
+  right: 35px;
+}
+
+.dropdown-menu {
+  min-width: 132px;
+}
+
+.btn-resetBoard {
+  margin-left: -90px;
+}
+
+.ship {
+  width: 160px;
+}
+
+.boardWrapper {
+  float: left;
+}
+
+.shipsWrapper {
+  display: none;
+}
+
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
+}
+
+@media (min-width: 630px){ 
+  .defaultCell {
+    width:40px;
+    height:40px;
+  }
+
+  .yTitles {
+    font-size: 9px;
+  }
+
+  .yTitle {
+    height: 40px;
+    padding-top:10px;
+    margin-right: -1px;
+  }
+
+  .xTitle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .instructions {
+    float: left;
+    font-size: 9px;
+    width: 220px;
+  }
+
+  .dropdown {
+    left: 17px;
+    float: left;
+  }
+
+  .resetButtonWrapper {
+    float: left;
+    margin-left: 113px;
+    margin-top: 0px;
+  }
+}
+
+@media (min-width: 768px){ 
+  .defaultCell {
+    width:40px;
+    height:40px;
+  }
+
+  .yTitles {
+    font-size: 9px;
+  }
+
+  .yTitle {
+    height: 40px;
+    padding-top:10px;
+    margin-right: -10px;
+  }
+
+  .xTitles {
+  }
+
+  .xTitle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .instructions {
+    float: left;
+    font-size: 9px;
+    width: 220px;
+  }
+
+
+  .dropdown {
+    left: 17px;
+    float: left;
+  }
+
+  .resetButtonWrapper {
+    float: left;
+    margin-left: 113px;
+    margin-top: 0px;
+  }
+
+  .shipsWrapper {
+    float: left;
+    margin-left: 10px;
+    display: block;
+  }
+/*  .btn-resetBoard {
+    margin-left: 0px;
+  }
+
+  .dropdown{
+    right: 10px;
+  }*/
+}
+
+@media (min-width: 992px){
+  .defaultCell {
+    width:50px;
+    height:50px;
+  }
+
+  .yTitles {
+    font-size: 14px;
+  }
+
+  .yTitle {
+    height: 50px;
+    padding-top: 16px;
+    margin-right: 0px;
+  }
+
+  .xTitles {
+  }
+
+  .xTitle {
+    width: 50px;
+    height: 50px;
+  }
+
+  .instructions {
+    float: left;
+    font-size: 14px;
+    width: 340px;
+  }
+
+  .dropdown {
+    margin-top: 2px;
+    left: 14px;
+    float: left;
+  }
+
+  .btn-resetBoard {
+    float: left;
+    margin-top: 2px;
+  }
+
+  .resetButtonWrapper {
+    float: left;
+    margin-left: 113px;
+    margin-top: 0px;
+  }
 }

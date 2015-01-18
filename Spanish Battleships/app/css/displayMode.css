@@ -1,0 +1,24 @@
+.display-mode {
+  height: 0;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+.display-mode span {
+  display: inline-block;
+  height: 1px;
+  width: 1px;
+}
+
+@media (max-width: 400px) {
+  .display-mode .other {
+    display: none;
+  }
+}
+
+@media (min-width: 401px) {
+  .display-mode .mobile {
+    display: none;
+  }
+}

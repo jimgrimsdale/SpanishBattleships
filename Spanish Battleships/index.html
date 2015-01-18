@@ -1,20 +1,24 @@
 <html ng-app="battleshipsApp">
 
-  <head>
-    <script src="app/lib/angular/angular.js"></script>
-    <script src="app/lib/jquery.min.js"></script>
-    <script src="app/lib/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="app/css/bootstrap.min.css">
-    <link rel="stylesheet" href="app/css/main.css" />
-  </head>
+<head>
+  <script src="app/lib/angular/angular.js"></script>
+  <script src="app/lib/jquery.min.js"></script>
+  <script src="app/lib/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="app/css/bootstrap.min.css">
+  <link rel="stylesheet" href="app/css/main.css" />
+  <link rel="stylesheet" href="app/css/displayMode.css" />
+  <link rel="stylesheet" media="screen" href="http://openfontlibrary.org/face/crystal" rel="stylesheet" type="text/css"/>
+</head>
 
 <body ng-controller="BattleshipsController" ng-cloak >
+  <div class="display-mode" dn-display-mode="displayMode" dn-reset-board="resetBoard"></div>
   
   <div class="container">
     <div class="row">
-      <h1 class="col-xs-8 col-xs-offset-1">Battleships</h1>
+      <h1 class="col-xs-8 col-xs-offset-0" id="headerSpanishBattleships">SPANISH BATTLESHIPS<h1>
     </div>
     <div class="row">
+      <div class="col-xs-1"></div>
       <div class="col-xs-8 col-xs-offset-0">
         <div class="xTitles">
           <div class="xTitle" ng-repeat="verb in boardVerbs">{{verb.verb}}</div>
@@ -29,48 +33,37 @@
           <div class="yTitle">el/ella/usted</div>
           <div class="yTitle">nosotros</div>
           <div class="yTitle">vosotros</div>
-          <div class="yTitle">ellos/ellas/ustedes</div>
+          <div class="yTitle">ellos/ellas/<br/>ustedes</div>
         </div>
       </div>
-      <div class="board col-xs-7 col-xs-offset-0" ng-show="showBoard">
-        <div ng-class="{ true : 'firstCell' }[$first]" class="defaultCell" ng-repeat="cell in boardLayout.rows[0]" ng-style="{ 'backgroundColor':cell.colour }"></div>
-        <div ng-class="{ true : 'firstCell' }[$first]" class="defaultCell" ng-repeat="cell in boardLayout.rows[1]" ng-style="{ 'backgroundColor':cell.colour }"></div>
-        <div ng-class="{ true : 'firstCell' }[$first]" class="defaultCell" ng-repeat="cell in boardLayout.rows[2]" ng-style="{ 'backgroundColor':cell.colour }"></div>
-        <div ng-class="{ true : 'firstCell' }[$first]" class="defaultCell" ng-repeat="cell in boardLayout.rows[3]" ng-style="{ 'backgroundColor':cell.colour }"></div>
-        <div ng-class="{ true : 'firstCell' }[$first]" class="defaultCell" ng-repeat="cell in boardLayout.rows[4]" ng-style="{ 'backgroundColor':cell.colour }"></div>
-        <div ng-class="{ true : 'firstCell' }[$first]" class="defaultCell" ng-repeat="cell in boardLayout.rows[5]" ng-style="{ 'backgroundColor':cell.colour }"></div>
-      </div>
-      <div class="board col-xs-7 col-xs-offset-0" ng-hide="showBoard">
-        <div class="tocadoContainer" ng-style="{ 'backgroundColor': tocadoColour }">
-          <div class="tocado">TOCADO!!!</div>
+      <div class="board col-xs-11 col-xs-offset-0">
+        <div class="boardWrapper" ng-show="showBoard">
+          <div ng-class="{ true : 'firstCell' }[$first]" class="defaultCell" ng-repeat="cell in boardLayout.rows[0]" ng-style="{ 'backgroundColor':cell.colour }"></div>
+          <div ng-class="{ true : 'firstCell' }[$first]" class="defaultCell" ng-repeat="cell in boardLayout.rows[1]" ng-style="{ 'backgroundColor':cell.colour }"></div>
+          <div ng-class="{ true : 'firstCell' }[$first]" class="defaultCell" ng-repeat="cell in boardLayout.rows[2]" ng-style="{ 'backgroundColor':cell.colour }"></div>
+          <div ng-class="{ true : 'firstCell' }[$first]" class="defaultCell" ng-repeat="cell in boardLayout.rows[3]" ng-style="{ 'backgroundColor':cell.colour }"></div>
+          <div ng-class="{ true : 'firstCell' }[$first]" class="defaultCell" ng-repeat="cell in boardLayout.rows[4]" ng-style="{ 'backgroundColor':cell.colour }"></div>
+          <div ng-class="{ true : 'firstCell' }[$first]" class="defaultCell" ng-repeat="cell in boardLayout.rows[5]" ng-style="{ 'backgroundColor':cell.colour }"></div>
         </div>
-      </div>
-      <div class="col-xs-2">
-        <div class="btn-group-vertical" role="group">
-          <button type="button" class="btn btn-warning" ng-class="{'active': selectedTense==='present'}" ng-click="switchTense('present')">present</button>
-          <button type="button" class="btn btn-warning" ng-class="{'active': selectedTense==='imperfect'}" ng-click="switchTense('imperfect')">imperfect</button>
-          <button type="button" class="btn btn-warning" ng-class="{'active': selectedTense==='preterite'}" ng-click="switchTense('preterite')">preterite</button>
+        <div class="boardWrapper" ng-hide="showBoard">
+          <div class="tocadoContainer" ng-style="{ 'backgroundColor': tocadoColour }">
+            <div class="tocado">TOCADO!!!</div>
+          </div>
         </div>
-        
-        <div>
-          <button type="button" class="btn btn-primary" ng-click="resetBoard()" style="margin-top: 40px;">Reset Board</button>
-        </div>
-      </div>
-      <div class="col-xs-2">
-        <div>
-          <div class="fiveLongShip" ng-class="{ 'sunk': fiveLongSunk }">
+        <div class="shipsWrapper">
+          <div class="fiveLongShip ship" ng-class="{ 'sunk': fiveLongSunk }">
             <img src="./app/images/5long.gif" width="150" height="30" />
           </div>
-          <div class="fourLongAShip" ng-class="{ 'sunk': fourLongASunk }">
+          <div class="fourLongAShip ship" ng-class="{ 'sunk': fourLongASunk }">
             <img src="./app/images/4longa.gif" width="120" height="30" />
           </div>
-          <div class="fourLongBShip" ng-class="{ 'sunk': fourLongBSunk }">
+          <div class="fourLongBShip ship" ng-class="{ 'sunk': fourLongBSunk }">
             <img src="./app/images/4longb.gif" width="120" height="30" />
           </div>
-          <div class="threeLongShip" ng-class="{ 'sunk': threeLongSunk }">
+          <div class="threeLongShip ship" ng-class="{ 'sunk': threeLongSunk }">
             <img src="./app/images/3long.gif" width="90" height="30" />
           </div>
-          <div class="twoLongShip" ng-class="{ 'sunk': twoLongSunk }">
+          <div class="twoLongShip ship" ng-class="{ 'sunk': twoLongSunk }">
             <img src="./app/images/3long.gif" width="60" height="30" />
           </div>
         </div>
@@ -78,25 +71,46 @@
     </div>
 
     <div class="row">
-      <div class="col-xs-5 col-xs-offset-4" style="margin-top: 10px;">
+      <div class="col-xs-1" style="margin-top: 0px;">
         <form ng-submit="onShotAttempt()" style="position:relative; right: 1200;">
           <input type="text" class="inputWord" ng-model="inputText" ng-keyup="keyup($event)" ng-keydown="keydown($event)" autofocus/>
-          <input class="btn btn-primary" type="submit" value="Fire" />
         </form>
+      </div>
+      <div class="col-xs-11" style="margin-top: 5px;">
+        <div class="instructions">
+          To make a shot type in a verb in the present tense
+          <br />Hold down shift to type an accented character
+        </div>
+      
+ <!--      <div class="col-xs-2" style="margin-top: 5px;"> -->
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+            Change Tense
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ng-click="switchTense('present')">Present</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ng-click="switchTense('imperfect')">Imperfect</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ng-click="switchTense('preterite')">Preterite</a></li>
+          </ul>
+        </div>
+<!--       </div> -->
+      <div class="resetButtonWrapper">
+        <button type="button" class="btn btn-primary btn-resetBoard" ng-click="resetBoard()">Reset Board</button>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-xs-5 col-xs-offset-4">
+      <div class="col-xs-5 col-xs-offset-1">
         <div id='validationMessage'>{{validationMessage}}</div>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-xs-3 col-xs-offset-4"  ng-hide="showFilteredInputText">
+      <div class="col-xs-3 col-xs-offset-1"  ng-hide="showFilteredInputText">
         <div id='divText' ng-style="{ 'color':divTextColor }">{{inputText}}</div>
       </div>
-      <div class="col-xs-3 col-xs-offset-4" ng-show="showFilteredInputText">
+      <div class="col-xs-3 col-xs-offset-1" ng-show="showFilteredInputText">
         <div id='divText' ng-style="{ 'color':divTextColor }">{{filteredInputText}}</div>
       </div>
     </div>   
@@ -105,7 +119,8 @@
   <script src="app/js/app.js"></script>
   <script src="app/js/services/boardService.js"></script>
   <script src="app/js/services/dictionaryService.js"></script>
+  
   <script src="app/js/controllers/BattleshipsController.js"></script>
-  <script src="app/js/boardsetup.js"></script>
+  <script src="app/js/directives/displayModeDirective.js"></script>
 </body>
 </html>

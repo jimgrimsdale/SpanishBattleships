@@ -77,10 +77,11 @@
   var providedVerbs = [];
 
   return {
-    get12Verbs: function get12Verbs (tense) {
+    getVerbs: function get12Verbs (tense, number) {
       var verbsToReturn = [];
       providedVerbs = [];
-      angular.forEach(verbDictionary, function (entry) {
+      var slicedVerbsFromDiciionary = verbDictionary.slice(-number);
+      angular.forEach(slicedVerbsFromDiciionary, function (entry) {
         switch (tense) {
           case "present": verbsToReturn.push({ verb: entry.verb, verbs: entry.present });
             providedVerbs.push.apply(providedVerbs, entry[tense]);
