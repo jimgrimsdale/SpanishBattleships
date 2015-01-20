@@ -128,11 +128,17 @@ td.shipGreen {
   display: none;
 }
 
+.showOnPhone {
+  display: none;
+}
+
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
 
-@media (min-width: 630px){ 
+
+
+@media (min-width: 0px){ 
   .defaultCell {
     width:40px;
     height:40px;
@@ -161,6 +167,7 @@ td.shipGreen {
 
   .dropdown {
     left: 17px;
+    right: 0;
     float: left;
   }
 
@@ -169,6 +176,46 @@ td.shipGreen {
     margin-left: 113px;
     margin-top: 0px;
   }
+}
+
+@media (max-width: 400px){
+  #headerSpanishBattleships {
+    font-size: 25px;
+    text-align: center;
+  }
+
+  .dropdown {
+    left: 0;
+  }
+
+  .resetButtonWrapper{
+    margin-left: 93px;
+  }
+
+  .hideOnPhone {
+    display: none;
+  }
+
+  .showOnPhone {
+    display: block;
+    margin-top: 5px;
+  }
+
+  .container {
+    margin-left: 15px;
+  }
+
+  .headerRow {
+    margin-left: -30px;
+  }
+
+  .yTitle.twoLine {
+    padding-top: 8px;
+  }
+}
+
+@media (min-width: 630px){ 
+  
 }
 
 @media (min-width: 768px){ 
@@ -185,6 +232,10 @@ td.shipGreen {
     height: 40px;
     padding-top:10px;
     margin-right: -10px;
+  }
+
+  .yTitle.twoLine {
+    padding-top: 8px;
   }
 
   .xTitles {
@@ -241,6 +292,10 @@ td.shipGreen {
     height: 50px;
     padding-top: 16px;
     margin-right: 0px;
+  }
+
+  .yTitle.twoLine {
+    padding-top: 6px;
   }
 
   .xTitles {

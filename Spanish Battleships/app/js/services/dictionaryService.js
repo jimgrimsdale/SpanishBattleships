@@ -71,17 +71,55 @@
       present: ['trabajo', 'trabajas', 'trabaja', 'trabajamos', 'trabajáis', 'trabajan'],
       imperfect: ['yo trabajaba', 'trabajabas', 'trabajaba', 'trabajábamos', 'trabajabais', 'trabajaban'],
       preterite: ['trabajé', 'trabajaste', 'trabajó', 'trabajamos', 'trabajasteis', 'trabajaron']
+    },
+    { 
+      verb: 'tratar',
+      meaning: 'to try',
+      present: ['trato', 'tratas', 'trata', 'tratamos', 'tratáis', 'tratan'],
+      imperfect: ['trataba', 'tratabas', 'trataba', 'tratábamos', 'tratabais', 'trataban'],
+      preterite: ['traté', 'trataste', 'trató', 'tratamos', 'tratasteis', 'trataron']
+    },
+    { 
+      verb: 'caer',
+      meaning: 'to fall',
+      present: ['caigo', 'caes', 'cae', 'caemos', 'caéis', 'caen'],
+      imperfect: ['caía', 'caías', 'caía', 'caíamos', 'caíais', 'caían'],
+      preterite: ['caí', 'caíste', 'cayó', 'caímos', 'caísteis', 'cayeron']
+    },
+    { 
+      verb: 'pasear',
+      meaning: 'to go for a walk/ride/drive',
+      present: ['paseo', 'paseas', 'pasea', 'paseamos', 'paseáis', 'pasean'],
+      imperfect: ['paseaba', 'paseabas', 'paseaba', 'paseábamos', 'paseabais', 'paseaban'],
+      preterite: ['paseé', 'paseaste', 'paseó', 'paseamos', 'paseasteis', 'pasearon']
+    },
+    { 
+      verb: 'pasar',
+      meaning: 'to pass',
+      present: ['paso', 'pasas', 'pasa', 'pasamos', 'pasáis', 'pasan'],
+      imperfect: ['pasaba', 'pasabas', 'pasaba', 'pasábamos', 'pasabais', 'pasaban'],
+      preterite: ['pasé', 'pasaste', 'pasó', 'pasamos', 'pasasteis', 'pasaron']
+    },
+    { 
+      verb: 'ver',
+      meaning: 'to see, to look at, to watch',
+      present: ['veo', 'ves', 've', 'vemos', 'veis', 'ven'],
+      imperfect: ['veía', 'veías', 'veía', 'veíamos', 'veíais', 'veían'],
+      preterite: ['vi', 'viste', 'vio', 'vimos', 'visteis', 'vieron']
     }
   ];
 
-  var providedVerbs = [];
+  var providedVerbs = [],
+    randomDictionarySet = [];
+
 
   return {
-    getVerbs: function get12Verbs (tense, number) {
+    getVerbs: function getVerbs (tense, number) {
       var verbsToReturn = [];
       providedVerbs = [];
-      var slicedVerbsFromDiciionary = verbDictionary.slice(-number);
-      angular.forEach(slicedVerbsFromDiciionary, function (entry) {
+      // var slicedVerbsFromDiciionary = verbDictionary.slice(-number);
+      randomDictionarySet = getRandomSubarray(verbDictionary, number);
+      angular.forEach(randomDictionarySet, function (entry) {
         switch (tense) {
           case "present": verbsToReturn.push({ verb: entry.verb, verbs: entry.present });
             providedVerbs.push.apply(providedVerbs, entry[tense]);
@@ -99,6 +137,36 @@
     },
     getProvidedVerbs: function () {
       return providedVerbs;
+    },
+    getSwitchedVerbs: function getVerbs (tense, number) {
+      var verbsToReturn = [];
+      providedVerbs = [];
+      angular.forEach(randomDictionarySet, function (entry) {
+        switch (tense) {
+          case "present": verbsToReturn.push({ verb: entry.verb, verbs: entry.present });
+            providedVerbs.push.apply(providedVerbs, entry[tense]);
+            break;
+          case "imperfect": verbsToReturn.push({ verb: entry.verb, verbs: entry.imperfect });
+            providedVerbs.push.apply(providedVerbs, entry[tense]);
+            break;
+          case "preterite": verbsToReturn.push({ verb: entry.verb, verbs: entry.preterite });
+            providedVerbs.push.apply(providedVerbs, entry[tense]);
+            break;
+        }        
+      });
+      return verbsToReturn;
     }
+
   };
+
+  function getRandomSubarray(arr, size) {
+    var shuffled = arr.slice(0), i = arr.length, temp, index;
+    while (i--) {
+        index = Math.floor((i + 1) * Math.random());
+        temp = shuffled[index];
+        shuffled[index] = shuffled[i];
+        shuffled[i] = temp;
+    }
+    return shuffled.slice(0, size);
+  }
 });
