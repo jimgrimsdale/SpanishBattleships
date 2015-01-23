@@ -3,9 +3,14 @@ body {
   color: white;
 }
 
+@font-face {
+  font-family: 'orbitron-bold-webfont';
+  src: url('../fonts/orbitron-bold-webfont.woff');
+}
+
 #headerSpanishBattleships {
-  font-family: 'CRYSTALRegular'; 
-  font-weight: normal; 
+  font-family: 'orbitron-bold-webfont';
+  font-weight: normal;
   font-style: normal;
   color: yellow;
 }
