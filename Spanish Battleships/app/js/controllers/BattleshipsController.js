@@ -66,8 +66,15 @@
       };
 
       $scope.keyup = function (e) {
-        var allVerbs = dictionaryService.getProvidedVerbs(),
-          enteredChar = $scope.inputText.slice(-1);
+        var allVerbs,
+          enteredChar;
+
+        if (e.keyCode === 13) {
+          return;
+        }
+
+        allVerbs = dictionaryService.getProvidedVerbs();
+        enteredChar = $scope.inputText.slice(-1);
 
         if (enteredChar === "A" || enteredChar === "E" || enteredChar === "I" || enteredChar === "O" || enteredChar === "U") {
           $scope.inputText = $scope.inputText.slice(0, -1);
@@ -95,6 +102,8 @@
         }
 
         $scope.showFilteredInputText = true;
+
+        window.scrollTo(0, document.body.scrollHeight);
       };
 
       $scope.onShotAttempt = function () {
@@ -124,11 +133,13 @@
 
         if (coord === null) {
           $scope.validationMessage = "verb " + inputText + " not found!";
+          $scope.filteredInputText = "";
           return;
         }
 
         if (verbsTried.indexOf(inputText) !== -1) {
           $scope.validationMessage = "You have already tried that verb!";
+          $scope.filteredInputText = "";
           return;
         }
         verbsTried.push(inputText);
@@ -136,6 +147,7 @@
         location = "x" + coord.x + "y" + coord.y;
         if (locationsTried.indexOf(location) !== -1) {
           $scope.validationMessage = "You have already tried there!";
+          $scope.filteredInputText = "";
           return;
         }
         locationsTried.push(location);
@@ -174,6 +186,8 @@
           $scope.boardLayout.rows[coord.y][coord.x].colour = 'yellow';
         }
         blown = false;
+
+        window.scrollTo(0, 0);
 
         function tocadoInterval(delay, count) {
           $scope.showBoard = false;

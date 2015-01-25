@@ -3,18 +3,6 @@ body {
   color: white;
 }
 
-@font-face {
-  font-family: 'orbitron-bold-webfont';
-  src: url('../fonts/orbitron-bold-webfont.woff');
-}
-
-#headerSpanishBattleships {
-  font-family: 'orbitron-bold-webfont';
-  font-weight: normal;
-  font-style: normal;
-  color: yellow;
-}
-
 #validationMessage {
   color: red;
 }
@@ -60,33 +48,38 @@ td.shipGreen {
 
 .yTitles {
   width: 130px;
+  margin-top: -10px;
 }
 
 .yTitle {
   height: 50px;
   padding-top: 16px;
   text-align: right;
+  font-size: 12px;
+  -moz-transform:rotate(-45deg); 
+  -moz-transform-origin: bottom right;
+  -webkit-transform: rotate(-45deg);
+  -webkit-transform-origin: bottom right;
+  -o-transform: rotate(-45deg);
+  -o-transform-origin: bottom right;
+  transform: rotate(315deg);
 }
 
-
 .xTitles {
-    margin: 30 0 0 0;
-   -moz-transform:rotate(-90deg); 
-   -moz-transform-origin: top left;
-   -webkit-transform: rotate(-90deg);
-   -webkit-transform-origin: top left;
-   -o-transform: rotate(-90deg);
-   -o-transform-origin:  top left;
-    position:relative;
-   top:40px;
-   height: 50px;
-   width: 50px;
-   padding-top: 13px;
+  margin-top: 30px;
 }
 
 .xTitle {
   width: 50px;
-  height: 50px;
+  float: left;
+  font-size: 12px;
+  -moz-transform:rotate(-45deg); 
+  -moz-transform-origin: top left;
+  -webkit-transform: rotate(-45deg);
+  -webkit-transform-origin: top left;
+  -o-transform: rotate(-45deg);
+  -o-transform-origin:  top left;
+  transform: rotate(315deg);
 }
 
 .tocadoContainer {
@@ -141,8 +134,6 @@ td.shipGreen {
   display: none !important;
 }
 
-
-
 @media (min-width: 0px){ 
   .defaultCell {
     width:40px;
@@ -151,6 +142,7 @@ td.shipGreen {
 
   .yTitles {
     font-size: 9px;
+    margin-right: 0px;
   }
 
   .yTitle {
@@ -161,7 +153,6 @@ td.shipGreen {
 
   .xTitle {
     width: 40px;
-    height: 40px;
   }
 
   .instructions {
@@ -207,15 +198,28 @@ td.shipGreen {
   }
 
   .container {
-    margin-left: 15px;
+    margin-left: 25px;
   }
 
   .headerRow {
-    margin-left: -30px;
+    margin: 15px -30px 8px -50px;
+    margin-left: -45px;
   }
 
   .yTitle.twoLine {
     padding-top: 8px;
+  }
+
+  .xTitles {
+    margin-left: 30px;
+  }
+
+  .yTitles {
+    margin-right: -10px;
+  }
+
+  .instructions {
+    margin-left: 28px;
   }
 }
 
@@ -248,7 +252,6 @@ td.shipGreen {
 
   .xTitle {
     width: 40px;
-    height: 40px;
   }
 
   .instructions {
@@ -291,6 +294,7 @@ td.shipGreen {
 
   .yTitles {
     font-size: 14px;
+    margin-right: -19px;
   }
 
   .yTitle {
@@ -308,7 +312,6 @@ td.shipGreen {
 
   .xTitle {
     width: 50px;
-    height: 50px;
   }
 
   .instructions {
