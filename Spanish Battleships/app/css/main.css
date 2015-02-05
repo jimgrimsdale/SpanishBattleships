@@ -93,6 +93,16 @@ td.shipGreen {
   padding-top:96px;
 }
 
+.tocado-phone {
+  width: 240px;
+  height: 240px;
+}
+
+.tocado-phone .tocado {
+  font-size: 50px;
+  padding-top: 115px;
+}
+
 #divText {
   font-size: 60px;
   font-weight: bold;
@@ -172,6 +182,11 @@ td.shipGreen {
     margin-left: 113px;
     margin-top: 0px;
   }
+
+  .completedContainer {
+    color: black;
+    background-color: rgb(140, 216, 101);
+  }
 }
 
 @media (max-width: 400px){
@@ -220,6 +235,13 @@ td.shipGreen {
 
   .instructions {
     margin-left: 28px;
+  }
+
+  .completedContainer {
+    font-size: 14px;
+    width: 240px;
+    height: 240px;
+    padding: 15px;
   }
 }
 
@@ -276,6 +298,12 @@ td.shipGreen {
     float: left;
     margin-left: 10px;
     display: block;
+  }
+
+  .completedContainer {
+    width: 480px;
+    height: 240px;
+    font-size: 25px;
   }
 /*  .btn-resetBoard {
     margin-left: 0px;
@@ -335,5 +363,13 @@ td.shipGreen {
     float: left;
     margin-left: 113px;
     margin-top: 0px;
+  }
+
+  .completedContainer {
+    width: 600px;
+    height: 300px;
+    color: black;
+    background-color: rgb(140, 216, 101);
+    font-size: 30px;
   }
 }

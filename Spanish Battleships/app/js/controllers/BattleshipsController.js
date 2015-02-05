@@ -22,7 +22,9 @@
       }
 
       $scope.selectedTense = "present";
-      $scope.showBoard = true; 
+      $scope.showBoard = true;
+      $scope.showCompleted = false;
+      $scope.movesCount = 0;
 
       $scope.fiveLongSunk = false;
       $scope.fourLongASunk = false;
@@ -57,6 +59,9 @@
         $scope.fourLongBSunk = false;
         $scope.threeLongSunk = false;
         $scope.twoLongSunk = false;
+        $scope.movesCount = 0;
+        $scope.showBoard = true;
+        $scope.showCompleted = false;
       };
 
       $scope.keydown = function (e) {
@@ -151,6 +156,7 @@
           return;
         }
         locationsTried.push(location);
+        $scope.movesCount++;
 
         angular.forEach($scope.ships, function(ship) {
           if(ship.sunk === false) {
@@ -177,6 +183,10 @@
                       break;
                   }
                   tocadoInterval(50, 20);
+                  if ($scope.fiveLongSunk && $scope.fourLongBSunk && $scope.fourLongASunk && $scope.threeLongSunk && $scope.twoLongSunk) {
+                    $scope.showCompleted = true;
+                    $scope.showBoard = false;
+                  }
                 }
               }
             }

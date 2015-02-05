@@ -1,10 +1,11 @@
 <html ng-app="battleshipsApp">
 
 <head>
-  <title>Spanish Battleships</title>
+  <title>Spanish Battleships - A Spanish verb conjugation learning game.</title>
   <meta name="description" content="A version of the classic Battleships game to help learn Spanish verb conjugations.">
   <meta name="author" content="James Grimsdale">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="spanish,verbs,battleships,game">
   <script src="app/lib/angular/angular.js"></script>
   <script src="app/lib/jquery.min.js"></script>
   <script src="app/lib/bootstrap.min.js"></script>
@@ -51,8 +52,13 @@
           <div ng-class="{ true : 'firstCell' }[$first]" class="defaultCell" ng-repeat="cell in boardLayout.rows[5]" ng-style="{ 'backgroundColor':cell.colour }"></div>
         </div>
         <div class="boardWrapper" ng-hide="showBoard">
-          <div class="tocadoContainer" ng-style="{ 'backgroundColor': tocadoColour }">
+          <div class="tocadoContainer" ng-class="{ 'tocado-phone' : numberOfVerbs === 6 }" ng-style="{ 'backgroundColor': tocadoColour }">
             <div class="tocado">TOCADO!!!</div>
+          </div>
+        </div>
+        <div class="boardWrapper" ng-show="showCompleted">
+          <div class="completedContainer">
+            <div class="completedMessage">Well done! You completed the game and sunk all 5 ships in {{movesCount}} moves</div>
           </div>
         </div>
         <div class="shipsWrapper">
@@ -70,6 +76,9 @@
           </div>
           <div class="twoLongShip ship" ng-class="{ 'sunk': twoLongSunk }">
             <img src="./app/images/3long.gif" width="60" height="30" />
+          </div>
+          <div>
+            Moves: {{movesCount}}
           </div>
         </div>
       </div>
@@ -153,6 +162,9 @@
 
     ga('create', 'UA-58678493-1', 'auto');
     ga('send', 'pageview');
+
+
+    $('dropdown').select('mobile');
   </script>
 
 </body>
