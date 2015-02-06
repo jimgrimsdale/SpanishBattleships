@@ -243,10 +243,28 @@ td.shipGreen {
     height: 240px;
     padding: 15px;
   }
+
+  .headerImage {
+    width: 100%;
+  }
+
+  .ngdialog-content {
+    margin: 0 20px;
+  }
 }
 
 @media (min-width: 630px){ 
-  
+  .headerImage {
+    width: 50%;
+  }
+
+  .ngdialog-content {
+    width: 250px;
+  }
+
+  .ngdialog-content {
+    width: 450px;
+  }
 }
 
 @media (min-width: 768px){ 

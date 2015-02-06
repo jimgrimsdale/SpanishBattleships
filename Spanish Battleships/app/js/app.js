@@ -1,5 +1,5 @@
 'use strict';
 
-var battleshipsApp = angular.module('battleshipsApp', []);
+var battleshipsApp = angular.module('battleshipsApp', ['ngDialog']);
 
 

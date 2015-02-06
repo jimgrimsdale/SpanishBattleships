@@ -2,7 +2,7 @@
   'use strict';
 
   battleshipsApp.controller('BattleshipsController',
-    function BattleshipsController($scope, $interval, boardService, dictionaryService) {
+    function BattleshipsController($scope, $interval, boardService, dictionaryService, ngDialog) {
       var verbsTried = [],
         locationsTried = [],
         blown,
@@ -37,8 +37,20 @@
       $scope.showFilteredInputText = false;
       $scope.divText = '';
       $scope.divTextColor = 'red';
+      $scope.tocadoColour = 'black';
 
-      $scope.tocadoColour = 'black';  
+      $scope.showDefinition = function (verbName) {
+        var verbData = dictionaryService.getVerbData(verbName, $scope.selectedTense);
+        $scope.verbName = verbName;
+        $scope.meaning = verbData.meaning;
+        $scope.conjugations = verbData.conjugations;
+
+        ngDialog.open({
+          className: 'ngDialog-theme-default',
+          template: 'verbDefinitionTemplate',
+          scope: $scope
+        });
+      };
 
       $scope.switchTense = function (tense) {
         $scope.selectedTense = tense;

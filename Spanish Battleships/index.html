@@ -10,6 +10,8 @@
   <script src="app/lib/jquery.min.js"></script>
   <script src="app/lib/bootstrap.min.js"></script>
   <link rel="stylesheet" href="app/css/bootstrap.min.css">
+  <link rel="stylesheet" href="app/js/ngDialog/ngDialog.css" />
+  <link rel="stylesheet" href="app/js/ngDialog/ngDialog-theme-default.min.css" />
   <link rel="stylesheet" href="app/css/main.css" />
   <link rel="stylesheet" href="app/css/displayMode.css" />
 </head>
@@ -20,14 +22,14 @@
   <div class="container">
     <div class="row headerRow">
       <div class="col-xs-10 col-xs-offset-1">
-        <img ng-src="./app/images/header-main.png" style="width:100%" />
+        <img ng-src="./app/images/header-main.png" class="headerImage" />
       </div>
     </div>
     <div class="row">
       <div class="col-xs-1"></div>
       <div class="col-xs-11">
         <div class="xTitles">
-          <div class="xTitle" ng-repeat="verb in boardVerbs">{{verb.verb}}</div>
+          <div class="xTitle" ng-repeat="verb in boardVerbs" ng-click="showDefinition(verb.verb)" >{{verb.verb}}</div>
         </div>
       </div>
     </div>
@@ -146,13 +148,14 @@
       </div>
     </div>
   </div>
-   
+
   <script src="app/js/app.js"></script>
   <script src="app/js/services/boardService.js"></script>
   <script src="app/js/services/dictionaryService.js"></script>
-  
+
   <script src="app/js/controllers/BattleshipsController.js"></script>
   <script src="app/js/directives/displayModeDirective.js"></script>
+  <script src="app/js/ngDialog/ngDialog.js"></script>
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -165,6 +168,12 @@
 
 
     $('dropdown').select('mobile');
+  </script>
+
+  <script type="text/ng-template" id="verbDefinitionTemplate">
+    <h1 style="margin-top: 0">{{verbName}}</h1>
+    <div style="font-size:25px; color: lightblue; margin-bottom: 20px;">{{meaning}}</div>
+    <div ng-repeat="conjugation in conjugations">{{conjugation}}</div>
   </script>
 
 </body>
